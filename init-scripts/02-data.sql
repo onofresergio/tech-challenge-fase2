@@ -1,0 +1,2 @@
+INSERT INTO tipo_usuario (id, nome) values (1,'Dono de Restaurante'), (2, 'Cliente');
+INSERT INTO tipo_cozinha values (1, "Italiana"), (2, "Chinesa"), (3, "Japonesa"), (4, "Brasileira"), (5, "Mexicana");
