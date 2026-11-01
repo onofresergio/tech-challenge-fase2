@@ -1,0 +1,477 @@
+{
+  "info": {
+    "_postman_id": "36b59b20-92b1-4828-9315-9cffc2131b6d",
+    "name": "TechChallenge-V2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49478839",
+    "_collection_link": "https://go.postman.co/collection/49478839-36b59b20-92b1-4828-9315-9cffc2131b6d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Sucesso",
+      "item": [
+        {
+          "name": "Endereco",
+          "item": [
+            {
+              "name": "Cadastrar Endereco",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/enderecos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "enderecos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Buscar Endereco",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/enderecos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "enderecos"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Usuario",
+          "item": [
+            {
+              "name": "Cadastrar Usuario",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Onofre Sergio\",\r\n  \"email\": \"teste@email.com\",\r\n  \"login\": \"login2\",\r\n  \"senha\": \"teste\",\r\n  \"enderecoId\": 2,\r\n  \"tipoUsuarioId\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/usuarios",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "usuarios"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Buscar Usuarios",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Onofre Sergio\",\r\n  \"email\": \"teste@email.com\",\r\n  \"login\": \"login2\",\r\n  \"senha\": \"teste\",\r\n  \"enderecoId\": 2,\r\n  \"tipoUsuarioId\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/usuarios",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "usuarios"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Buscar Usuarios por nome",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Onofre Sergio\",\r\n  \"email\": \"teste@email.com\",\r\n  \"login\": \"login2\",\r\n  \"senha\": \"teste\",\r\n  \"enderecoId\": 2,\r\n  \"tipoUsuarioId\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/usuarios/nome/onofre",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "usuarios",
+                    "nome",
+                    "onofre"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Tipo Usuario",
+          "item": [
+            {
+              "name": "Buscar Tipo de Usuario",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/tipo-usuario",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "tipo-usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Deletear Tipo de Usuario",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/tipo-usuario/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "tipo-usuario",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Criar Tipo de Usuario",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Garçon\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/tipo-usuario",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "tipo-usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualizar Tipo de Usuario",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"id\": \"2\",\r\n    \"nome\": \"Garçon\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/tipo-usuario/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "tipo-usuario",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Restaurante",
+          "item": [
+            {
+              "name": "Buscar Restaurantes",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/restaurantes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "restaurantes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Deletar Restaurantes",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/restaurantes/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "restaurantes",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Cadastrar Restaurantes",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Sabor do Norte\",\r\n  \"enderecoId\": 1,\r\n  \"tipoCozinhaId\": 1,\r\n  \"horarioFuncionamento\": \"2025-10-11T12:00:00\",\r\n  \"tipoUsuarioId\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/restaurantes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "restaurantes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualizar Restaurantes",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Sabor do Norte 2\",\r\n  \"enderecoId\": 2,\r\n  \"tipoCozinhaId\": 3,\r\n  \"horarioFuncionamento\": \"2025-10-11T12:00:00\",\r\n  \"tipoUsuarioId\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/restaurantes/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "restaurantes",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Menu",
+          "item": [
+            {
+              "name": "Cadastrar Menus",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Lasanha à Bolonhesa\",\r\n  \"descricao\": \"Lasanha com molho bolonhesa e queijo gratinado.\",\r\n  \"valorPrato\": 39.90,\r\n  \"disponivelRestaurante\": true,\r\n  \"fotoPrato\": \"https://img.example.com/lasanha.jpg\",\r\n  \"restauranteId\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/menus",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "menus"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualizar Menus",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Lasanha à Bolonhesa 2026\",\r\n  \"descricao\": \"Lasanha com molho bolonhesa e queijo gratinado.\",\r\n  \"valorPrato\": 49.90,\r\n  \"disponivelRestaurante\": true,\r\n  \"fotoPrato\": \"https://img.example.com/lasanha.jpg\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/menus/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "menus",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Buscar Menus",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Deletar Menu",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/v2/menus/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "v2",
+                    "menus",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
