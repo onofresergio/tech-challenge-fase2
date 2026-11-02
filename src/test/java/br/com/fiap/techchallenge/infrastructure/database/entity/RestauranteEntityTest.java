@@ -34,7 +34,7 @@ public class RestauranteEntityTest {
         assertThat(entity).extracting("enderecoId").isEqualTo(10L);
         assertThat(entity).extracting("tipoCozinhaId").isEqualTo(20L);
         assertThat(entity).extracting("horarioFuncionamento").isEqualTo(horarioFuncionamento);
-        assertThat(entity).extracting("tipoUsuarioId").isEqualTo(4L);
+        assertThat(entity).extracting("usuarioId").isEqualTo(4L);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class RestauranteEntityTest {
         assertThat(resultadoDomain.enderecoId()).isEqualTo(10L);
         assertThat(resultadoDomain.tipoCozinhaId()).isEqualTo(20L);
         assertThat(resultadoDomain.horarioFuncionamento()).isEqualTo(horarioFuncionamento);
-        assertThat(resultadoDomain.tipoUsuarioId()).isEqualTo(4L);
+        assertThat(resultadoDomain.usuarioId()).isEqualTo(4L);
     }
 
     @Test

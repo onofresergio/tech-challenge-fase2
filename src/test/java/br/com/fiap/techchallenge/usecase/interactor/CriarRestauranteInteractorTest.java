@@ -64,7 +64,7 @@ public class CriarRestauranteInteractorTest {
         assertThat(enviadoParaSalvar.enderecoId()).isEqualTo(enderecoId);
         assertThat(enviadoParaSalvar.tipoCozinhaId()).isEqualTo(tipoCozinhaId);
         assertThat(enviadoParaSalvar.horarioFuncionamento()).isEqualTo(horarioFuncionamento);
-        assertThat(enviadoParaSalvar.tipoUsuarioId()).isEqualTo(tipoUsuarioIdDono);
+        assertThat(enviadoParaSalvar.usuarioId()).isEqualTo(tipoUsuarioIdDono);
     }
 
     @Test

@@ -58,6 +58,16 @@ class RestauranteRestAssuredIT {
         jdbcTemplate.update("INSERT INTO tipo_cozinha (nome) VALUES (?)", "Italiana");
         jdbcTemplate.update("INSERT INTO endereco (rua, numero, cidade, estado, cep) VALUES (?, ?, ?, ?, ?)",
                 "Rua das Flores", "123", "São Paulo", "SP", "01000-000");
+        jdbcTemplate.update(
+                "INSERT INTO usuario (nome, email, senha, login, data_ultima_alteracao, endereco_id, tipo_usuario_id) VALUES (?, ?, ?, ?, ?, ?, ?)",
+                "João Dono",
+                "joao@email.com",
+                "$2a$10$8SxN3Vf8jz0Yh4QfM0H8QeSh0l6P0VvC8M9Qxw8kL6m3gI0E3/By",
+                "joao_dono",
+                null,
+                1L,
+                1L
+        );
     }
 
     @Test
@@ -68,7 +78,7 @@ class RestauranteRestAssuredIT {
                 "enderecoId", 1L,
                 "tipoCozinhaId", 1L,
                 "horarioFuncionamento", "2025-10-11T12:00:00",
-                "tipoUsuarioId", 1L
+                "usuarioId", 1L
         );
 
         given()
@@ -86,7 +96,7 @@ class RestauranteRestAssuredIT {
     @DisplayName("GET /api/v2/restaurantes deve listar os restaurantes cadastrados")
     void deveListarRestaurantes() {
         jdbcTemplate.update(
-                "INSERT INTO restaurante (nome, endereco_id, tipo_cozinha_id, horario_funcionamento, data_ultima_alteracao, tipo_usuario_id) VALUES (?, ?, ?, ?, ?, ?)",
+                "INSERT INTO restaurante (nome, endereco_id, tipo_cozinha_id, horario_funcionamento, data_ultima_alteracao, usuario_id) VALUES (?, ?, ?, ?, ?, ?)",
                 "Sabor do Norte",
                 1L,
                 1L,

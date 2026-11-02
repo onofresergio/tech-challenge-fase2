@@ -55,7 +55,7 @@ public class RestauranteController {
                 request.enderecoId(),
                 request.tipoCozinhaId(),
                 request.horarioFuncionamento(),
-                request.tipoUsuarioId()
+                request.usuarioId()
         );
 
         return ResponseEntity.status(HttpStatus.CREATED).body(restauranteResponseAssembler.toResponse(restaurant));
@@ -104,7 +104,7 @@ public class RestauranteController {
                 request.enderecoId(),
                 request.tipoCozinhaId(),
                 request.horarioFuncionamento(),
-                request.tipoUsuarioId()
+                request.usuarioId()
         );
 
         return ResponseEntity.ok(restauranteResponseAssembler.toResponse(restaurant));

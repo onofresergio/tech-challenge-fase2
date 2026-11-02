@@ -8,6 +8,6 @@ public record RestauranteResponse(
         LocalDateTime horarioFuncionamento,
         EnderecoResponse endereco,
         TipoCozinhaResponse tipoCozinha,
-        TipoUsuarioResponse tipoUsuario
+        UsuarioResponse usuario
 ) {
 }

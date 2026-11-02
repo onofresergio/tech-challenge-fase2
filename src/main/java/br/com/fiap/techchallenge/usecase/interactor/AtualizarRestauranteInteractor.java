@@ -18,21 +18,21 @@ public class AtualizarRestauranteInteractor implements UpdateRestauranteUseCase 
     }
 
     @Override
-    public Restaurante execute(Long id, String nome, Long enderecoId, Long tipoCozinhaId, LocalDateTime horarioFuncionamento, Long tipoUsuarioId) {
+    public Restaurante execute(Long id, String nome, Long enderecoId, Long tipoCozinhaId, LocalDateTime horarioFuncionamento, Long usuarioId) {
         var restaurante = restauranteRepositoryPort.findById(id)
                 .orElseThrow(() -> new RestauranteNotFoundException(id));
 
-        if (!Objects.equals(restaurante.tipoUsuarioId(), tipoUsuarioId)) {
-            throw new UnauthorizedUserException(tipoUsuarioId);
+        if (!Objects.equals(restaurante.usuarioId(), usuarioId)) {
+            throw new UnauthorizedUserException(usuarioId);
         }
 
         var restauranteAtualizado = new Restaurante(
                 restaurante.id(),
                 nome,
-                enderecoId, //restaurante.enderecoId(),
-                tipoCozinhaId, //restaurante.tipoCozinhaId(),
+                enderecoId,
+                tipoCozinhaId,
                 horarioFuncionamento,
-                restaurante.tipoUsuarioId()
+                usuarioId
         );
 
         return restauranteRepositoryPort.save(restauranteAtualizado);

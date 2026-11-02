@@ -10,10 +10,8 @@ public record Restaurante(
         Long enderecoId,
         Long tipoCozinhaId,
         LocalDateTime horarioFuncionamento,
-        //LocalDateTime dataUltimaAlteracao,
-        Long tipoUsuarioId
+        Long usuarioId
 ) {
-    // Construtor Compacto para validações invariantes
     public Restaurante {
         nome = nome == null ? null : nome.trim();
         if (nome == null || nome.isBlank()) {
@@ -28,8 +26,8 @@ public record Restaurante(
         if (horarioFuncionamento == null) {
             throw new RestauranteValidationException("O horário de funcionamento deve ser informado.");
         }
-        if (tipoUsuarioId == null || tipoUsuarioId <= 0) {
-            throw new RestauranteValidationException("ID de tipo de usuário inválido.");
+        if (usuarioId == null || usuarioId <= 0) {
+            throw new RestauranteValidationException("ID de usuário inválido.");
         }
     }
 
@@ -40,8 +38,7 @@ public record Restaurante(
                 this.enderecoId,
                 this.tipoCozinhaId,
                 this.horarioFuncionamento,
-                //dataUltimaAlteracao,
-                this.tipoUsuarioId
+                this.usuarioId
         );
     }
 }

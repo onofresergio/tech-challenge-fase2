@@ -27,7 +27,7 @@ public class RestauranteTest {
         assertThat(restaurante.enderecoId()).isEqualTo(2L);
         assertThat(restaurante.tipoCozinhaId()).isEqualTo(3L);
         assertThat(restaurante.horarioFuncionamento()).isEqualTo(horarioPadrao);
-        assertThat(restaurante.tipoUsuarioId()).isEqualTo(4L);
+        assertThat(restaurante.usuarioId()).isEqualTo(4L);
     }
 
     @Test
@@ -55,7 +55,7 @@ public class RestauranteTest {
         assertThat(restauranteAtualizado.enderecoId()).isEqualTo(restauranteOriginal.enderecoId());
         assertThat(restauranteAtualizado.tipoCozinhaId()).isEqualTo(restauranteOriginal.tipoCozinhaId());
         assertThat(restauranteAtualizado.horarioFuncionamento()).isEqualTo(restauranteOriginal.horarioFuncionamento());
-        assertThat(restauranteAtualizado.tipoUsuarioId()).isEqualTo(restauranteOriginal.tipoUsuarioId());
+        assertThat(restauranteAtualizado.usuarioId()).isEqualTo(restauranteOriginal.usuarioId());
     }
 
     @ParameterizedTest
@@ -111,19 +111,19 @@ public class RestauranteTest {
     }
 
     @Test
-    @DisplayName("Deve lançar exceção quando o ID do tipo de usuário for nulo")
-    void deveLancarExcecaoQuandoTipoUsuarioIdForNulo() {
+    @DisplayName("Deve lançar exceção quando o ID do usuário for nulo")
+    void deveLancarExcecaoQuandoUsuarioIdForNulo() {
         assertThatThrownBy(() -> new Restaurante(1L, "Restaurante", 2L, 3L, horarioPadrao, null))
                 .isInstanceOf(RestauranteValidationException.class)
-                .hasMessage("ID de tipo de usuário inválido.");
+                .hasMessage("ID de usuário inválido.");
     }
 
     @ParameterizedTest
     @ValueSource(longs = {0L, -1L, -99L})
-    @DisplayName("Deve lançar exceção quando o ID do tipo de usuário for menor ou igual a zero")
-    void deveLancarExcecaoQuandoTipoUsuarioIdInvalido(Long idInvalido) {
+    @DisplayName("Deve lançar exceção quando o ID do usuário for menor ou igual a zero")
+    void deveLancarExcecaoQuandoUsuarioIdInvalido(Long idInvalido) {
         assertThatThrownBy(() -> new Restaurante(1L, "Restaurante", 2L, 3L, horarioPadrao, idInvalido))
                 .isInstanceOf(RestauranteValidationException.class)
-                .hasMessage("ID de tipo de usuário inválido.");
+                .hasMessage("ID de usuário inválido.");
     }
 }

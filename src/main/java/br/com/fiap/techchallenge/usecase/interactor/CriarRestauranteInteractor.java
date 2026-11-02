@@ -21,13 +21,13 @@ public class CriarRestauranteInteractor implements CriarRestauranteUseCase {
     }
 
     @Override
-    public Restaurante execute(String nome, Long enderecoId, Long tipoCozinhaId, LocalDateTime horarioFuncionamento, Long tipoUsuarioId) {
+    public Restaurante execute(String nome, Long enderecoId, Long tipoCozinhaId, LocalDateTime horarioFuncionamento, Long usuarioId) {
 
-        if (!tipoUsuarioAuthorizationPort.isRestaurantOwner(tipoUsuarioId)) {
-            throw new UnauthorizedUserException(tipoUsuarioId);
+        if (!tipoUsuarioAuthorizationPort.isRestaurantOwner(usuarioId)) {
+            throw new UnauthorizedUserException(usuarioId);
         }
 
-        var restaurante = new Restaurante(null, nome, enderecoId, tipoCozinhaId, horarioFuncionamento, tipoUsuarioId);
+        var restaurante = new Restaurante(null, nome, enderecoId, tipoCozinhaId, horarioFuncionamento, usuarioId);
         return restauranteRepositoryPort.save(restaurante);
     }
 

@@ -62,7 +62,7 @@ public class AtualizarRestauranteInteractorTest {
         assertThat(enviadoParaSalvar.horarioFuncionamento()).isEqualTo(horarioNovo);
         assertThat(enviadoParaSalvar.enderecoId()).isEqualTo(2L);
         assertThat(enviadoParaSalvar.tipoCozinhaId()).isEqualTo(3L);
-        assertThat(enviadoParaSalvar.tipoUsuarioId()).isEqualTo(tipoUsuarioIdAutorizado);
+        assertThat(enviadoParaSalvar.usuarioId()).isEqualTo(tipoUsuarioIdAutorizado);
     }
 
     @Test

@@ -43,11 +43,11 @@ CREATE TABLE IF NOT EXISTS restaurante (
     tipo_cozinha_id INT NOT NULL,
     horario_funcionamento DATETIME NOT NULL,
     data_ultima_alteracao DATETIME NULL,
-    tipo_usuario_id INT NOT NULL,
+    usuario_id INT NOT NULL,
     CONSTRAINT pk_restaurante PRIMARY KEY (id),
     CONSTRAINT fk_restaurante_endereco FOREIGN KEY (endereco_id) REFERENCES endereco(id),
     CONSTRAINT fk_restaurante_tipo_cozinha FOREIGN KEY (tipo_cozinha_id) REFERENCES tipo_cozinha(id),
-    CONSTRAINT fk_restaurante_usuario_tipo FOREIGN KEY (tipo_usuario_id) REFERENCES tipo_usuario(id)
+    CONSTRAINT fk_restaurante_usuario FOREIGN KEY (usuario_id) REFERENCES usuario(id)
     );
 
 CREATE TABLE IF NOT EXISTS menu (

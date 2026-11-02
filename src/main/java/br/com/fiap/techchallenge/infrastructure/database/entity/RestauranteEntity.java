@@ -28,12 +28,11 @@ public class RestauranteEntity {
     @Column(name = "data_ultima_alteracao")
     private LocalDateTime lastModifiedDate;
 
-    @Column(name = "tipo_usuario_id", nullable = false)
-    private Long tipoUsuarioId;
+    @Column(name = "usuario_id", nullable = false)
+    private Long usuarioId;
 
     public RestauranteEntity() {}
 
-    // Converte o modelo de Domínio puro para a Entidade do JPA
     public static RestauranteEntity fromDomain(Restaurante restaurante) {
         RestauranteEntity entity = new RestauranteEntity();
         entity.id = restaurante.id();
@@ -41,12 +40,10 @@ public class RestauranteEntity {
         entity.enderecoId = restaurante.enderecoId();
         entity.tipoCozinhaId = restaurante.tipoCozinhaId();
         entity.horarioFuncionamento = restaurante.horarioFuncionamento();
-        //entity.lastModifiedDate = restaurante.dataUltimaAlteracao();
-        entity.tipoUsuarioId = restaurante.tipoUsuarioId();
+        entity.usuarioId = restaurante.usuarioId();
         return entity;
     }
 
-    // Converte a Entidade do JPA de volta para o Domínio puro
     public Restaurante toDomain() {
         return new Restaurante(
                 this.id,
@@ -54,8 +51,7 @@ public class RestauranteEntity {
                 this.enderecoId,
                 this.tipoCozinhaId,
                 this.horarioFuncionamento,
-                //this.lastModifiedDate,
-                this.tipoUsuarioId
+                this.usuarioId
         );
     }
 

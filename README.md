@@ -39,7 +39,7 @@ src/main/java/br/com/fiap/techchallenge
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/onofresergio/tech-challenge-fase1.git
+   git clone https://github.com/onofresergio/tech-challenge-fase2.git
 
 ## 🐳 Executando com Docker Compose
 
@@ -69,7 +69,7 @@ O sistema é pensado para apoiar operações típicas de um ambiente gastronômi
 
 - cadastro de usuários com perfil e endereço;
 - definição de tipos de usuário e tipos de cozinha;
-- cadastro de restaurantes vinculados a endereço e categoria culinária;
+- cadastro de restaurantes vinculados a endereço, categoria culinária e usuário responsável;
 - gerenciamento de cardápios com disponibilidade e foto;
 - validações de domínio e segurança de senhas mediante hash BCrypt;
 - exposição de endpoints REST documentados com OpenAPI/Swagger.
@@ -82,7 +82,7 @@ A aplicação tem como objetivo centralizar o processo de gestão de um ambiente
 
 - registrar dados de usuários e associá-los a endereço e tipo de perfil;
 - manter catálogo de tipos de cozinhas e perfis de acesso;
-- cadastrar restaurantes e relacioná-los a endereço, tipo culinário, tipo de usuário e horário de funcionamento;
+- cadastrar restaurantes e relacioná-los a endereço, tipo culinário, usuário responsável e horário de funcionamento;
 - organizar itens de menu por restaurante;
 - manter regras de negócio e validações em um único ponto de decisão, evitando lógica espalhada por controllers e repositories.
 
@@ -104,7 +104,7 @@ A camada de domínio é o núcleo da solução. Nela estão os modelos record, c
 Esses modelos possuem validações automáticas em seus construtores, o que garante que entidades inválidas não alcancem o restante da aplicação. Exemplos:
 
 - `Usuario` exige nome, e-mail válido, senha, login e IDs válidos de endereço e tipo de usuário;
-- `Restaurante` exige nome, endereço, tipo de cozinha, horário e tipo de usuário;
+- `Restaurante` exige nome, endereço, tipo de cozinha, horário e `usuarioId` do responsável;
 - `Menu` valida nome, descrição, valor, disponibilidade e restaurante associado.
 
 Esse padrão reduz a possibilidade de inconsistência e centraliza as regras de integridade do negócio em um único ponto.
@@ -239,22 +239,26 @@ sequenceDiagram
     participant UseCase as CriarRestauranteUseCase
     participant Interactor as CriarRestauranteInteractor
     participant AuthPort as TipoUsuarioAuthorizationPort
+    participant UserRepo as UsuarioRepositoryPort
     participant RepoPort as RestauranteRepositoryPort
     participant RepoAdapter as RestauranteRepositoryAdapter
     participant JpaRepo as RestauranteJpaRepository
     participant DB as MySQL
 
     Cliente->>Controller: POST /api/v2/restaurantes
-    Controller->>UseCase: execute(nome, enderecoId, tipoCozinhaId, horarioFuncionamento, tipoUsuarioId)
+    Controller->>UseCase: execute(nome, enderecoId, tipoCozinhaId, horarioFuncionamento, usuarioId)
     UseCase->>Interactor: execute(...)
-    Interactor->>AuthPort: isRestaurantOwner(tipoUsuarioId)
+    Interactor->>AuthPort: isRestaurantOwner(usuarioId)
+    AuthPort->>UserRepo: findById(usuarioId)
+    UserRepo-->>AuthPort: Usuario
+    AuthPort->>AuthPort: valida tipo_usuario == "Dono de Restaurante"
     AuthPort-->>Interactor: true/false
 
-    alt tipoUsuarioId autorizado
+    alt usuario autorizado
         Interactor->>RepoPort: save(restaurante)
         RepoPort->>RepoAdapter: save(restaurante)
         RepoAdapter->>JpaRepo: save(entity)
-        JpaRepo->>DB: INSERT INTO restaurante (...)
+        JpaRepo->>DB: INSERT INTO restaurante (..., usuario_id)
         DB-->>JpaRepo: restaurante persistido
         JpaRepo-->>RepoAdapter: RestauranteEntity
         RepoAdapter-->>RepoPort: Restaurante
@@ -273,7 +277,7 @@ Exemplo de fluxo de cadastro de restaurante:
 - `RestauranteController.create(...)`
 - chama `CriarRestauranteUseCase.execute(...)`
 - `CriarRestauranteInteractor.execute(...)`
-- valida autorização do tipo de usuário
+- valida autorização do usuário associado (perfil `Dono de Restaurante`)
 - cria `Restaurante` no domínio
 - salva via `RestauranteRepositoryPort`
 - persiste no banco por JPA

@@ -26,9 +26,9 @@ public record AtualizarRestauranteRequest(
         @NotNull(message = "O horário de funcionamento é obrigatório.")
         LocalDateTime horarioFuncionamento,
 
-        @Schema(description = "Identificador do tipo de usuário do restaurante.", example = "3")
-        @NotNull(message = "O tipo de usuário é obrigatório.")
-        @Positive(message = "ID de tipo de usuário inválido.")
-        Long tipoUsuarioId
+        @Schema(description = "Identificador do usuário responsável pelo restaurante.", example = "3")
+        @NotNull(message = "O usuário responsável é obrigatório.")
+        @Positive(message = "ID de usuário inválido.")
+        Long usuarioId
 ) {
 }
